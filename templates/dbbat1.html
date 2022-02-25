@@ -1,0 +1,42 @@
+{% extends "head-footer.html" %}
+    {% block content %}
+<br>
+
+<div class="text-left mt-5 ml-5">
+    <h2>Below are the <b>bat</b> with details. If you are interested on ball, gloves.</u></h2>
+</div>
+
+<div class="row">
+    {% for item in posts %}
+       <div class="col-lg-4">
+                <div class="card card-inverse card-primary" style="width: 25rem; length: 30rem">
+                  <div class="card-block">
+                    <div class="text-xs-center">
+                      <ul class="pagination">
+                        <p>PID: {{item[0]}}, Name: Demo<br><img class="card-img-top" src="static/image/{{item[3]}}" alt="..." class="img-thumbnail"><br>
+                        Price: &#x20B9;{{item[2]}}<br><br>
+                        Details about item:<br> {{item[1]}}<br><br>
+                        <b>Are you interested in this item?</b> <a href="#" class="btn btn-info">Yes</a></p>
+                     </ul>
+                   </div>
+                  </div>
+             </div>
+      </div>
+      {% endfor %}
+</div>
+<!--
+ width="304" height="236"
+<div>
+     {% for item in posts %}
+  <div>
+    <div>
+      <h3>Product ID: {{item[0]}}</h3>
+      <img src="static/image/{{item[3]}}" alt="..." class="img-thumbnail"  width="304" height="236">
+      <p>{{item[1]}}</p>
+      <p>Price: Rs.{{item[2]}}</p>
+    </div>
+  </div>
+</div>
+     {% endfor %}
+-->
+    {% endblock %}

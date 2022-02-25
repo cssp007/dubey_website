@@ -1,0 +1,42 @@
+{% extends "head-footer.html" %}
+    {% block content %}
+<br>
+
+<div class="text-left mt-5 ml-5">
+    <h2><u><b>Know more about <font class="text-info">Bat..!!</font>.</b></u></h2>
+</div>
+
+<div class="row">
+    {% for item in posts %}
+       <div class="col-lg-3">
+                <div class="card card-inverse card-primary ">
+                  <div class="card-block">
+                    <div class="text-xs-center">
+                      <ul class="pagination">
+                    <p class="card-header"><b>Product ID: {{item[0]}}</b></p>
+                    <p class="card-header"><img src="static/image/{{item[3]}}" alt="..." class="img-thumbnail"></p>
+                    <p class="card-header">Price: Rs.{{item[2]}}</p>
+                    <p class="card-footer">{{item[1]}}</p>
+                  </ul>
+                </div>
+                  </div>
+             </div>
+      </div>
+      {% endfor %}
+</div>
+<!--
+ width="304" height="236"
+<div>
+     {% for item in posts %}
+  <div>
+    <div>
+      <h3>Product ID: {{item[0]}}</h3>
+      <img src="static/image/{{item[3]}}" alt="..." class="img-thumbnail"  width="304" height="236">
+      <p>{{item[1]}}</p>
+      <p>Price: Rs.{{item[2]}}</p>
+    </div>
+  </div>
+</div>
+     {% endfor %}
+-->
+    {% endblock %}
