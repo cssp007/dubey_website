@@ -8,6 +8,7 @@ from PIL import Image
 import base64
 import io
 from werkzeug.utils import secure_filename
+from functools import wraps
 
 
 
@@ -25,10 +26,6 @@ app.config['SECRET_KEY'] = os.urandom(24)
 def home():
     return render_template('index.html')
 
-@app.route("/bat")
-def bat():
-    return render_template('bat.html')
-
 @app.route("/dbbat", methods=["GET", "POST"])
 def dbbat():
     if request.method == "GET":
@@ -41,10 +38,6 @@ def dbball():
         posts = db.execute("SELECT * FROM ball")
         return render_template('dbball.html', posts=posts)
 
-@app.route("/ball")
-def ball():
-    return render_template('ball.html')
-
 @app.route("/gloves")
 def gloves():
     return render_template('gloves.html')
@@ -52,34 +45,6 @@ def gloves():
 @app.route("/pad")
 def pad():
     return render_template('pad.html')
-
-@app.route("/processpost")
-def processpost():
-    return render_template('processpost.html')
-
-@app.route("/iomemory")
-def iomemory():
-    return render_template('iomemory.html')
-
-@app.route("/data60")
-def data60():
-    return render_template('data60.html')
-
-@app.route("/data102")
-def data102():
-    return render_template('data102.html')
-
-@app.route("/grack")
-def grack():
-    return render_template('grack.html')
-
-@app.route("/post")
-def post():
-    return render_template('post.html')
-
-@app.route("/sign_out")
-def sign_out():
-    return render_template('sign_out.html')
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -99,24 +64,46 @@ def admin():
         else:
             for i in passworddata:
                 if i == password:
+                    session['email'] = email
                     return redirect(url_for('update'))
                 else:
                     return render_template("index.html")
 
     return render_template('index.html', title='index')
-
+"""
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash("You need to login first")
+            return redirect(url_for('admin'))
+"""
 
 @app.route("/deleteItem", methods=["GET", "POST"])
 def deleteItem():
     if request.method == "POST":
         addnewitem = request.form.get("addnewitem")
         itemID = request.form.get("itemID")
-        db.execute(
-            "DELETE FROM bat WHERE serialNumber=:itemID", {"itemID": itemID})
-        db.commit()
-        db.close()
-        return redirect(url_for('login'))
+        item_type = request.form.get("item_type")
+        if item_type == 'bat':
+            db.execute(
+                "DELETE FROM bat WHERE serialNumber=:itemID", {"itemID": itemID})
+            db.commit()
+            db.close()
+            return redirect(url_for('dbbat'))
+        elif item_type == 'ball':
+            db.execute(
+                "DELETE FROM ball WHERE serialNumber=:itemID", {"itemID": itemID})
+            db.commit()
+            db.close()
+            return redirect(url_for('dbball'))
+        else:
+            flash("Password is not match..!!", "danger")
+            return render_template('signup.html')
 
+    return render_template('signup.html')
 
 @app.route("/addbat", methods=["GET", "POST"])
 def addbat():
@@ -152,14 +139,14 @@ def addbat():
 
 
 @app.route("/update")
+#@login_required
 def update():
     flash("This is a flashed message.")
     return render_template('update.html')
 
-@app.route("/forgot")
-def forgot():
-    return render_template('sign_out.html')
-
+@app.route("/contact")
+def contact():
+    return render_template('contact.html')
 
 
 if __name__ == '__main__':

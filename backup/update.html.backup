@@ -1,6 +1,9 @@
-{% extends "head-footer-with-logout.html" %}
-    {% block content %}
-<br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Game Elevated</title>
+
 <style>
 * {
   box-sizing: border-box;
@@ -26,10 +29,10 @@
 <style>
 .myDiv {
   margin: auto;
-  width: 90%;
+  width: 100%;
   padding: 10px;
   border: 5px outset red;
-  background-color: white;    
+  background-color: lightblue;    
   text-align: center;
 }
 </style>
@@ -49,14 +52,22 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function(){
-    $("#selectAction").change(function(){
-      var action =$("#selectAction").val();
-      $(".box").hide();
-      $("."+action).show(); 
-    })
-})
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
 </script>
 
+</head>
+<body>
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">
@@ -66,40 +77,36 @@ $(document).ready(function(){
 <div class="column" style="background-color:#bbb;">
 <div class="myDiv">
     <div>
-      <p><h2><u><b>What you wants to do?</b></u></h2></p>
-        <select id="selectAction">
+      <p>What you wants to do?</p>
+        <select>
             <option selected>Choose Options</option>
-            <option value="add">Add a new item</option>
-            <option value="update">Update a item</option>
-            <option value="delete">Delete a item</option>
+            <option value="green">Add a new item</option>
+            <option value="blue">Update a item</option>
+            <option value="red">Delete a item</option>
         </select>
     </div>
 
 <!-- Start adding new item block -->
-<div class="add box">
-    <div class="text-info text-left">
+<div class="green box">
+    <div>
      <form action="/addbat" method="POST" enctype="multipart/form-data">
-        <b>Item Type :</b>&emsp;&emsp;&emsp;&ensp;
-        <select name="item_type" class="text-center">
+        <select name="item_type">
             <option disabled selected>item type</option>
             <option value="bat">Bat</option>
             <option value="ball">Ball</option>
             <option value="pad">Pad</option>
         </select>
     </div>
-<br>
-    <div class="text-info text-left">
-       <label for="fname"><b>Details about item:</b></label>
-       <input type="textarea" id="itemDetials" name="itemDetials" required>
+    <div>
+       <label for="fname">Details about item:</label>
+       <input type="text" id="itemDetials" name="itemDetials" required>
     </div>
-<br>
-    <div class="text-info text-left">
-       <label for="fname"><b>Price:</b></label>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <div>
+       <label for="fname">Price:</label>
        <input type="text" id="itemPrice" name="itemPrice" required>
     </div>
-<br>
-    <div class="text-info text-left">
-       <label for="image"><b>Select a image:</b></label>&emsp;&emsp;
+    <div>
+       <label for="image">Select a image:</label>
        <input type="file" id="image" name="image" required>
     </div>
       <input type="submit" value="Add item">
@@ -108,35 +115,30 @@ $(document).ready(function(){
 <!-- End adding new item block -->
 
 <!-- Start updating item block -->
-<div class="update box text-left">
-    <div class="text-info">
+<div class="blue box">
+    <div>
       <form action="/">
-        <b>Item Type:</b>&emsp;&emsp;&emsp;
         <select>
             <option disabled selected>item type</option>
-            <option value="bat">Bat</option>
-            <option value="ball">Ball</option>
-            <option value="pad">Pad</option>
+            <option value="blue">Bat</option>
+            <option value="blue">Ball</option>
+            <option value="blue">Pad</option>
         </select>
     </div>
-<br>
-    <div class="text-info">
-       <label for="fname"><b>Updated item ID:</b></label>
+    <div>
+       <label for="fname">Updated item ID:</label>
        <input type="text" id="itemDetials" name="itemDetials">
     </div>
-<br>
-    <div class="text-info">
-       <label for="fname"><b>Update detail:</b></label>&emsp;&ensp;
+    <div>
+       <label for="fname">Update detail:</label>
        <input type="text" id="itemDetials" name="itemDetials">
     </div>
-<br>
-    <div class="text-info">
-       <label for="fname"><b>Update price:</b></label>&emsp;&ensp;
+    <div>
+       <label for="fname">Update price:</label>
        <input type="text" id="itemDetials" name="itemDetials">
     </div>
-<br>
-    <div class="text-info">
-       <label for="fname"><b>Update image:</b></label>&emsp;
+    <div>
+       <label for="fname">Update image:</label>
        <input type="file" id="itemDetials" name="itemDetials">
     </div>
       <input type="submit" value="Update item">
@@ -145,10 +147,9 @@ $(document).ready(function(){
 <!-- End updating item block -->
 
 <!-- Start delete item block -->
-<div class="delete box text-left">
-    <div class="text-info">
+<div class="red box">
+    <div>
       <form action="/deleteItem" method="POST" enctype="multipart/form-data">
-        <b>Item Type:</b>&ensp;&ensp;&ensp;
         <select name="item_type">
             <option disabled selected>item type</option>
             <option value="bat">Bat</option>
@@ -156,9 +157,8 @@ $(document).ready(function(){
             <option value="pad">Pad</option>
         </select>
     </div>
-<br>
-    <div class="text-info">
-       <label for="fname"><b>Delete item ID:</b></label>
+    <div>
+       <label for="fname">Delete item ID:</label>
        <input type="text" id="itemID" name="itemID">
     </div>
       <input type="submit" value="Delete item">
@@ -168,5 +168,5 @@ $(document).ready(function(){
 </div>
 </div>
 </div>
-
-    {% endblock %}
+</body>
+</html>

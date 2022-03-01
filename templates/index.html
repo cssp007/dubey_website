@@ -31,20 +31,17 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ url_for('dbbat') }}">Bat</a>
-          <a class="dropdown-item" href="{{ url_for('ball') }}">Ball</a>
+          <a class="dropdown-item" href="{{ url_for('dbball') }}">Ball</a>
 		  <a class="dropdown-item" href="{{ url_for('gloves') }}">Gloves</a>
 		  <a class="dropdown-item" href="{{ url_for('pad') }}">Pad</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Other</a>
         </div>
       </li>
         <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('processpost') }}">About Us</a>
+        <a class="nav-link" href="{{ url_for('contact') }}">About Us</a>
       </li>
-
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <a href="{{ url_for('login') }}" class="btn btn-info" role="button">Login</a>
+    <form class="form-inline my-2 my-lg-0 float-right">
+      <a href="{{ url_for('login') }}" class="btn btn-info float-right" role="button">Login</a>
     </form>
   </div>
 </nav>
