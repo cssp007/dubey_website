@@ -1,0 +1,30 @@
+{% extends "head-footer.html" %}
+    {% block content %}
+<br><br>
+<div class="m-5 pb-5">
+<p>
+<h3><b><u>Who We Are:</u></b></h3>
+<b>Gameelevated,</b> is one of the leading manufacturer , supplier & exporter of sports accessories like cricket bat, cricket balls, 
+cricket batting gloves, cricket batting pads, cricket accessories, tennis bats.
+</p>
+<p>
+<h3><b><u>OUR INFRASTRUTUR</u></b></h3>
+Our firm has constructed an ultra-modern infrastructure set up that is spread over a large area. This infrastructural helps us 
+to accomplish the diverse requirements of valuable customers. To manage the entire work process in an efficient manner, 
+we have selected team of professionals who have rich industry experience and knowledge.
+</p>
+<p>
+<h3><b><u>WHY US</u></b></h3>
+With a focus on the ever-evolving demands of our customers, we have come up with extremely good quality of products.
+</p>
+<p>
+<h3><b><u>OWING TO THE FOLLOWING FEATURES, WE HAVE GOT AN EDGE OVER OTHER MARKET PLAYERS</u></b></h3>
+-Use of advance technology<br>
+-International quality standards<br>
+-Competitive prices<br>
+-Wide range of products<br>
+-Dexterous team of -professionals<br>
+-Timely shipment
+</p>
+</div>
+    {% endblock %}

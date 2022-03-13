@@ -58,12 +58,7 @@ $(document).ready(function(){
 </script>
 
 
-<div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <img src="../static/whatuwantstodo.jpg" alt="Trulli" width="740" height="580">
-  </div>
-
-<div class="column" style="background-color:#bbb;">
+<div class="" style="background-color:#bbb;">
 <div class="myDiv">
     <div>
       <p><h2><u><b>What you wants to do?</b></u></h2></p>
@@ -78,7 +73,7 @@ $(document).ready(function(){
 <!-- Start adding new item block -->
 <div class="add box">
     <div class="text-info text-left">
-     <form action="/addbat" method="POST" enctype="multipart/form-data">
+     <form action="/addItem" method="POST" enctype="multipart/form-data">
         <b>Item Type :</b>&emsp;&emsp;&emsp;&ensp;
         <select name="item_type" class="text-center">
             <option disabled selected>item type</option>
@@ -86,6 +81,11 @@ $(document).ready(function(){
             <option value="ball">Ball</option>
             <option value="pad">Pad</option>
         </select>
+    </div>
+<br>
+    <div class="text-info text-left">
+       <label for="fname"><b>Ball Name:</b></label>
+       <input type="textarea" id="ballName" name="ballName" required>
     </div>
 <br>
     <div class="text-info text-left">
@@ -102,7 +102,7 @@ $(document).ready(function(){
        <label for="image"><b>Select a image:</b></label>&emsp;&emsp;
        <input type="file" id="image" name="image" required>
     </div>
-      <input type="submit" value="Add item">
+      <input class="text-info text-left" type="submit" value="Add item">
 </form>
 </div>
 <!-- End adding new item block -->
@@ -110,9 +110,9 @@ $(document).ready(function(){
 <!-- Start updating item block -->
 <div class="update box text-left">
     <div class="text-info">
-      <form action="/">
+      <form action="/updateItem" method="POST" enctype="multipart/form-data">
         <b>Item Type:</b>&emsp;&emsp;&emsp;
-        <select>
+        <select name="item_type" class="text-center">
             <option disabled selected>item type</option>
             <option value="bat">Bat</option>
             <option value="ball">Ball</option>
@@ -122,7 +122,7 @@ $(document).ready(function(){
 <br>
     <div class="text-info">
        <label for="fname"><b>Updated item ID:</b></label>
-       <input type="text" id="itemDetials" name="itemDetials">
+       <input type="text" id="itemID" name="itemID">
     </div>
 <br>
     <div class="text-info">
@@ -132,12 +132,12 @@ $(document).ready(function(){
 <br>
     <div class="text-info">
        <label for="fname"><b>Update price:</b></label>&emsp;&ensp;
-       <input type="text" id="itemDetials" name="itemDetials">
+       <input type="text" id="itemPrice" name="itemPrice">
     </div>
 <br>
     <div class="text-info">
        <label for="fname"><b>Update image:</b></label>&emsp;
-       <input type="file" id="itemDetials" name="itemDetials">
+       <input type="file" id="image" name="image">
     </div>
       <input type="submit" value="Update item">
 </form>
@@ -167,6 +167,11 @@ $(document).ready(function(){
 <!-- End delete item block -->
 </div>
 </div>
+<div class="text-red">
+<p>
+1. A great cover letter should convey enthusiasm for the role, demonstrate your employer knowledge, and provide details that supplement the information a hiring manager will find on your resume.<br> 
+Crafting a well-written cover letter can help you stand out from the competition, making it a critical piece of the job search.<br>
+Our cover letter examples help with your job application can convince employers that you’re the right person for the job.
+</p>
 </div>
-
     {% endblock %}

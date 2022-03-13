@@ -7,10 +7,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <title>Game Elevated</title>
   </head>
-  <body>
+  <body style="background-color:#ADAB8C;">
 
 	 <!-- Navbar -->
 
@@ -37,11 +36,16 @@
         </div>
       </li>
         <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('contact') }}">About Us</a>
+        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
       </li>
-    <form class="form-inline my-2 my-lg-0 float-right">
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('contact1') }}">Contact Us</a>
+      </li>
+<!--    <form class="form-inline my-2 my-lg-0 float-right">
       <a href="{{ url_for('login') }}" class="btn btn-info float-right" role="button">Login</a>
     </form>
+-->
     </ul>
   </div>
 </nav>
@@ -58,11 +62,11 @@
 
 <div class="modal-body bg-dark row mx-0 px-0">
   <div class="col-md-6  text-white">
-  © 2019 Copyright:Somnath Pandey
+  © 2019 Copyright
   </div>
 
   <div class="col-md-6 text-white text-right">
-  <a href="">Click to contact: Somnath Pandey</a>
+  <a href="">Click to contact</a>
   </div>
 </div>
 <!-- footer -->
