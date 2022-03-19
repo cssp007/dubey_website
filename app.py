@@ -171,9 +171,11 @@ def deleteItem():
 def addItem():
     if request.method == "POST":
         item_type = request.form.get("item_type")
-        ballName = request.form.get("ballName")
-        itemDetials = request.form.get("itemDetials")
-        itemPrice = request.form.get("itemPrice")
+        name = request.form.get("name")
+        color = request.form.get("color")
+        wieght = request.form.get("wieght")
+        dimensions = request.form.get("dimensions")
+        price = request.form.get("price")
         f = request.files['image']
         f.save(os.path.join('static/image', secure_filename(f.filename)))
         image = f.filename
@@ -181,15 +183,15 @@ def addItem():
 
         if item_type == 'bat':
             db.execute(
-                "INSERT INTO bat(details,price,image) VALUES(:itemDetials,:itemPrice,:image)",
-                {"itemDetials": itemDetials, "itemPrice": itemPrice, "image": image})
+                "INSERT INTO bat(name,price,image,color,wieght,dimensions) VALUES(:name,:price,:image,:color,:wieght,:dimensions)",
+                {"name": name, "price": price, "image": image, "color": color, "wieght": wieght, "dimensions": dimensions})
             db.commit()
             db.close()
             return redirect(url_for('dbbat'))
         elif item_type == 'ball':
             db.execute(
-                "INSERT INTO balls(ball_name,details,price,image) VALUES(:ballName,:itemDetials,:itemPrice,:image)",
-                {"ballName": ballName,"itemDetials": itemDetials, "itemPrice": itemPrice, "image": image})
+                "INSERT INTO balls(name,price,image,color,wieght,dimensions) VALUES(:name,:price,:image,:color,:wieght,:dimensions)",
+                {"name": name, "price": price, "image": image, "color": color, "wieght": wieght, "dimensions": dimensions})
             db.commit()
             db.close()
             return redirect(url_for('dbball'))

@@ -4,50 +4,62 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Game Elevated</title>
-  </head>
-  <body style="background-color:#ADAB8C;">
+    
+<style>
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Spartan', sans-serif;
+}
 
+.navbar .navbar-collapse a:hover{
+	background: #6FD482;
+}
+
+</style>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+
+
+<title>Game Elevated</title>
+</head>
+
+
+<body style="background-color:#ADAB8C;">
 	 <!-- Navbar -->
-
-	 <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
        <a class="navbar-brand" href="{{ url_for('home') }}"><b>Game Elevated</b></a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Product
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ url_for('dbbat') }}">Bat</a>
-          <a class="dropdown-item" href="{{ url_for('dbball') }}">Ball</a>
-		  <a class="dropdown-item" href="{{ url_for('gloves') }}">Gloves</a>
-		  <a class="dropdown-item" href="{{ url_for('pad') }}">Pad</a>
-        </div>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
-      </li>
-      </li>
-        <li class="nav-item active">
-        <a class="nav-link" href="{{ url_for('contact1') }}">Contact Us</a>
-      </li>
-<!--    <form class="form-inline my-2 my-lg-0 float-right">
-      <a href="{{ url_for('login') }}" class="btn btn-info float-right" role="button">Login</a>
-    </form>
--->
-    </ul>
-  </div>
+       <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item active">
+             <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+           </li>
+           <li class="nav-item dropdown active">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product</a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <a class="dropdown-item" href="{{ url_for('dbbat') }}">Bat</a>
+                 <a class="dropdown-item" href="{{ url_for('dbball') }}">Ball</a>
+		 <a class="dropdown-item" href="{{ url_for('gloves') }}">Gloves</a>
+		 <a class="dropdown-item" href="{{ url_for('pad') }}">Pad</a>
+               </div>
+           </li>
+           <li class="nav-item active">
+             <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+           </li>
+<!--      </li> -->
+           <li class="nav-item active">
+             <a class="nav-link" href="{{ url_for('contact1') }}">Contact Us</a>
+           </li>
+         </ul>
+       </div>
 </nav>
 
      <!-- Navbar -->
